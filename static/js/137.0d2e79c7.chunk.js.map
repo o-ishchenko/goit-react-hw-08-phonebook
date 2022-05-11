@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/137.0d2e79c7.chunk.js","mappings":"uKAMA,UAJqB,WACnB,OAAO","sources":["components/pages/NotFoundPage.js"],"sourcesContent":["import React from 'react';\n\nconst NotFoundPage = () => {\n  return <h3>404 Страница не найдена</h3>;\n};\n\nexport default NotFoundPage;\n"],"names":[],"sourceRoot":""}
