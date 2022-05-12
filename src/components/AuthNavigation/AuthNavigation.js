@@ -1,23 +1,23 @@
-import styles from './Navigation.module.css';
+import styles from './AuthNavigation.module.css';
 import { NavLink } from 'react-router-dom';
 
-function Navigation() {
+function AuthNavigation() {
   return (
     <nav>
       <NavLink
-        to="/"
+        to="/register"
         className={({ isActive }) => (isActive ? styles.active : styles.link)}
       >
-        Home
+        Sign up
       </NavLink>
       <NavLink
-        to="/contacts"
+        to="/login"
         className={({ isActive }) => (isActive ? styles.active : styles.link)}
       >
-        Contacts
+        Log in
       </NavLink>
     </nav>
   );
 }
 
-export default Navigation;
+export default AuthNavigation;

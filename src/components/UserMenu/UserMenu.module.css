@@ -1,0 +1,9 @@
+  .container {
+      display: 'flex';
+      align-items: center;
+     }
+.name {
+    font-weight: 700px;
+    margin-right: 20px;
+  }
+

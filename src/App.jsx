@@ -1,6 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
-import { lazy } from 'react'
-import Layout from './Layout';
+import { lazy, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import Layout from './components/Layout';
+import { authOperations } from './redux/auth';
 
 const HomePage = lazy(() => import('./pages/HomePage'))
 const RegisterPage = lazy(() => import('./pages/RegisterPage'))
@@ -8,7 +10,12 @@ const LoginPage = lazy(() => import('./pages/LoginPage'))
 const ContactsPage = lazy(() => import('./pages/ContactsPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
-export const App = () => {
+export  default function App () {
+    const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

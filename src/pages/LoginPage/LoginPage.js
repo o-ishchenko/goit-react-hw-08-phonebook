@@ -1,10 +1,10 @@
 import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { authOperations } from '../redux/auth';
-import styles from '../LoginPage/LoginPage.module.css';
+import { useDispatch } from 'react-redux';
+import { authOperations } from '../../redux/auth';
+import styles from './LoginPage.module.css';
 
 export default function LoginView() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -21,7 +21,7 @@ export default function LoginView() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    // dispatch(authOperations.logIn({ email, password }));
+    dispatch(authOperations.logIn({ email, password }));
     setEmail('');
     setPassword('');
   };
@@ -30,8 +30,8 @@ export default function LoginView() {
     <div>
       <h1>Login page</h1>
 
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
+      <form onSubmit={handleSubmit} className={styles.form} autoComplete="off">
+        <label className={styles.label}>
           Email
           <input
             type="email"
@@ -41,7 +41,7 @@ export default function LoginView() {
           />
         </label>
 
-        <label style={styles.label}>
+        <label className={styles.label}>
           Password
           <input
             type="password"
@@ -51,7 +51,7 @@ export default function LoginView() {
           />
         </label>
 
-        <button type="submit">Войти</button>
+        <button type="submit">Log in</button>
       </form>
     </div>
   );

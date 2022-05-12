@@ -1,10 +1,11 @@
 import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { authOperations } from '../redux/auth';
-import styles from '../RegisterPage/RegisterPage.module.css';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { authOperations } from '../../redux/auth';
+import styles from './RegisterPage.module.css';
 
-export default function RegisterView() {
-  // const dispatch = useDispatch();
+export default function RegisterPage() {
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,7 +25,11 @@ export default function RegisterView() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    // dispatch(authOperations.register({ name, email, password }));
+    if (password.length < 6) {
+      toast.info('Password must be at least 7 sybmols long');
+      return;
+    }
+    dispatch(authOperations.register({ name, email, password }));
     setName('');
     setEmail('');
     setPassword('');
@@ -34,13 +39,13 @@ export default function RegisterView() {
     <div>
       <h1>Registration page</h1>
 
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
+      <form onSubmit={handleSubmit} className={styles.form} autoComplete="off">
+        <label className={styles.label}>
           Name
           <input type="text" name="name" value={name} onChange={handleChange} />
         </label>
 
-        <label style={styles.label}>
+        <label className={styles.label}>
           Email
           <input
             type="email"
@@ -50,7 +55,7 @@ export default function RegisterView() {
           />
         </label>
 
-        <label style={styles.label}>
+        <label className={styles.label}>
           Password
           <input
             type="password"
