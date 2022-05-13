@@ -28,7 +28,7 @@ export default function LoginView() {
 
   return (
     <div>
-      <h1>Login page</h1>
+      <h1 className={styles.title}>Login page</h1>
 
       <form onSubmit={handleSubmit} className={styles.form} autoComplete="off">
         <label className={styles.label}>
@@ -51,7 +51,9 @@ export default function LoginView() {
           />
         </label>
 
-        <button type="submit">Log in</button>
+        <button type="submit" className={styles.button}>
+          Log in
+        </button>
       </form>
     </div>
   );

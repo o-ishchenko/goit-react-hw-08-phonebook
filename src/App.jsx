@@ -1,30 +1,36 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Layout from './components/Layout';
-import { authOperations } from './redux/auth';
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
+import { authOperations, authSelectors } from './redux/auth';
 
-const HomePage = lazy(() => import('./pages/HomePage'))
-const RegisterPage = lazy(() => import('./pages/RegisterPage'))
-const LoginPage = lazy(() => import('./pages/LoginPage'))
-const ContactsPage = lazy(() => import('./pages/ContactsPage'))
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
+const HomePage = lazy(() => import('./pages/HomePage'));
+const RegisterPage = lazy(() => import('./pages/RegisterPage'));
+const LoginPage = lazy(() => import('./pages/LoginPage'));
+const ContactsPage = lazy(() => import('./pages/ContactsPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
-export  default function App () {
-    const dispatch = useDispatch();
+export default function App() {
+  const dispatch = useDispatch();
+  const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
+
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path="register" element={<RegisterPage />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="contacts" element={<ContactsPage />} />
+      {isFetchingCurrentUser &&
+        <Route path="/" element={<Layout />}>
+        <Route index element={<PublicRoute><HomePage /></PublicRoute>} />
+        <Route path="register" element={<PublicRoute restricted><RegisterPage /></PublicRoute>} />
+        <Route path="login" element={<PublicRoute redirectTo="/contacts" restricted><LoginPage /></PublicRoute>} />
+        <Route path="contacts" element={<PrivateRoute redirectTo="/login"><ContactsPage /></PrivateRoute>} />
         <Route path="*" element={<NotFoundPage />} />
-      </Route>
+        </Route>
+      }
     </Routes>
   );
-};
+}

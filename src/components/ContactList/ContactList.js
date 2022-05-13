@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFetchContactsQuery } from '../../redux/contactsSlice';
+import Loader from 'components/Loader';
 import PropTypes from 'prop-types';
 import ContactItem from '../ContactItem';
 import s from './ContactList.module.css';
@@ -18,12 +19,12 @@ function ContactList({ filter }) {
   const visibleContacts = getVisibleContacts();
   return (
     <>
-      {isFetching && <h3>loading...</h3>}
+      {isFetching && <Loader />}
       {contacts && (
         <ul className={s.list}>
-          {visibleContacts.map(({ id, name, phone }) => (
+          {visibleContacts.map(({ id, name, number }) => (
             <li key={id}>
-              <ContactItem id={id} name={name} number={phone} />
+              <ContactItem id={id} name={name} number={number} />
             </li>
           ))}
         </ul>

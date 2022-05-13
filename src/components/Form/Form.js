@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {
-  // useFetchContactsQuery,
+  useFetchContactsQuery,
   useCreateContactMutation,
 } from '../../redux/contactsSlice';
 import { nanoid } from 'nanoid';
@@ -10,7 +10,7 @@ import s from './Form.module.css';
 function Form() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  // const { data: contacts } = useFetchContactsQuery();
+  const { data: contacts } = useFetchContactsQuery();
   const [createContact, { isLoading }] = useCreateContactMutation();
 
   let nameId = nanoid();
@@ -26,15 +26,15 @@ function Form() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const data = { name, phone: number };
-    // if (
-    //   contacts.find(
-    //     contact => contact.name.toLowerCase() === name.toLowerCase()
-    //   )
-    // ) {
-    //   toast.info(`${name} is already in contacts`);
-    //   return;
-    // }
+    const data = { name, number, id: nameId };
+    if (
+      contacts.find(
+        contact => contact.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
+      toast.info(`${name} is already in contacts`);
+      return;
+    }
     createContact(data);
     reset();
     toast.success('New contact added!');

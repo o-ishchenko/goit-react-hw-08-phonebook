@@ -10,9 +10,11 @@ function Layout() {
   return (
     <div className={styles.container}>
       <AppBar />
-      <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense>
+      <div className={styles.centered}>
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </div>
       <ToastContainer autoClose={1500} position="top-center" />
     </div>
   );
