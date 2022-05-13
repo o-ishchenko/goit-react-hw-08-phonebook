@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../../redux/auth';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 import styles from './LoginPage.module.css';
 
 export default function LoginView() {
@@ -28,7 +30,7 @@ export default function LoginView() {
 
   return (
     <div>
-      <h1 className={styles.title}>Login page</h1>
+      <h1 className={styles.title}>Sign in into Contacts Book</h1>
 
       <form onSubmit={handleSubmit} className={styles.form} autoComplete="off">
         <label className={styles.label}>
@@ -52,10 +54,11 @@ export default function LoginView() {
             onChange={handleChange}
           />
         </label>
-
-        <button type="submit" className={styles.button}>
-          Log in
-        </button>
+        <Stack className={styles.button} spacing={2} direction="row">
+          <Button variant="outlined" type="submit">
+            Sign in
+          </Button>
+        </Stack>
       </form>
     </div>
   );

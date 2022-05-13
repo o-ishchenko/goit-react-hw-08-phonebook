@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { authOperations } from '../../redux/auth';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 import styles from './RegisterPage.module.css';
 
 export default function RegisterPage() {
@@ -37,7 +39,7 @@ export default function RegisterPage() {
 
   return (
     <div>
-      <h1 className={styles.title}>Registration page</h1>
+      <h1 className={styles.title}>User registration</h1>
 
       <form onSubmit={handleSubmit} className={styles.form} autoComplete="off">
         <label className={styles.label}>
@@ -72,10 +74,11 @@ export default function RegisterPage() {
             onChange={handleChange}
           />
         </label>
-
-        <button type="submit" className={styles.button}>
-          Register
-        </button>
+        <Stack className={styles.button} spacing={2} direction="row">
+          <Button variant="outlined" type="submit">
+            Register
+          </Button>
+        </Stack>
       </form>
     </div>
   );

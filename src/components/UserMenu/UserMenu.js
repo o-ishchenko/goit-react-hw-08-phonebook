@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { authSelectors, authOperations } from '../../redux/auth';
-// import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import styles from './UserMenu.module.css';
 
@@ -10,7 +9,9 @@ export default function UserMenu() {
 
   return (
     <div className={styles.container}>
-      <span className={styles.name}>Welcome, {name}</span>
+      <span className={styles.name}>
+        Welcome, <b>{name}</b>
+      </span>
 
       <Button
         variant="outlined"

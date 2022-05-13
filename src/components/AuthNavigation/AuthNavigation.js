@@ -14,7 +14,7 @@ function AuthNavigation() {
         to="/login"
         className={({ isActive }) => (isActive ? styles.active : styles.link)}
       >
-        Log in
+        Sign in
       </NavLink>
     </nav>
   );
