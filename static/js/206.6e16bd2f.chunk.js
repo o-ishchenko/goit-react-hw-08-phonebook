@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgoit_react_hw_08_phonebook=self.webpackChunkgoit_react_hw_08_phonebook||[]).push([[206],{1206:function(e,o,t){t.r(o);t(2791);var n=t(184);o.default=function(){return(0,n.jsx)(n.Fragment,{children:(0,n.jsx)("h1",{children:"Welcome to our Contacts Book "})})}}}]);
+//# sourceMappingURL=206.6e16bd2f.chunk.js.map
