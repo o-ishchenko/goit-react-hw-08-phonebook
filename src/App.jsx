@@ -22,7 +22,7 @@ export default function App() {
 
   return (
     <Routes>
-      {isFetchingCurrentUser &&
+      {!isFetchingCurrentUser &&
         <Route path="/" element={<Layout />}>
         <Route index element={<PublicRoute><HomePage /></PublicRoute>} />
         <Route path="register" element={<PublicRoute restricted><RegisterPage /></PublicRoute>} />

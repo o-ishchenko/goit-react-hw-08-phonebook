@@ -5,6 +5,8 @@ import {
 } from '../../redux/contactsSlice';
 import { nanoid } from 'nanoid';
 import { toast } from 'react-toastify';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 import s from './Form.module.css';
 
 function Form() {
@@ -47,7 +49,9 @@ function Form() {
 
   return (
     <form className={s.form} onSubmit={handleSubmit}>
-      <label htmlFor={nameId}>Name</label>
+      <label className={s.label} htmlFor={nameId}>
+        Name
+      </label>
       <input
         className={s.input}
         type="text"
@@ -59,7 +63,9 @@ function Form() {
         required
         onChange={handleNameChange}
       />
-      <label htmlFor={numberId}>Number</label>
+      <label className={s.label} htmlFor={numberId}>
+        Number
+      </label>
       <input
         className={s.input}
         type="tel"
@@ -71,9 +77,14 @@ function Form() {
         required
         onChange={handleNumberChange}
       />
-      <button className={s.button} type="submit" disabled={isLoading}>
+      {/* <button className={s.button} type="submit" disabled={isLoading}>
         Add contact
-      </button>
+      </button> */}
+      <Stack className={s.button} spacing={2} direction="row">
+        <Button variant="outlined" type="submit" disabled={isLoading}>
+          Add contact
+        </Button>
+      </Stack>
     </form>
   );
 }

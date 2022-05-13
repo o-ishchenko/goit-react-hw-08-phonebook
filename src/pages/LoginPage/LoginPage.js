@@ -34,6 +34,7 @@ export default function LoginView() {
         <label className={styles.label}>
           Email
           <input
+            className={styles.input}
             type="email"
             name="email"
             value={email}
@@ -44,6 +45,7 @@ export default function LoginView() {
         <label className={styles.label}>
           Password
           <input
+            className={styles.input}
             type="password"
             name="password"
             value={password}

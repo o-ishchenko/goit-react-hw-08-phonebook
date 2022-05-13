@@ -1,5 +1,5 @@
 .list {
-  width: 400px;
+  width: 500px;
   list-style: none;
   padding: 0 20px;
   margin-left: auto;
@@ -9,5 +9,5 @@
 
 h3{
   text-align: center;
-  
+  color: #2a363b;
 }

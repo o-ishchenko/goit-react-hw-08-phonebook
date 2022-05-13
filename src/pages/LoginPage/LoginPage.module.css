@@ -1,24 +1,35 @@
-  .title {
-      text-align: center;
-  }
-  .form {
-    width: 400px;
-        border: 1px solid black;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        margin-left: auto;
-        margin-right: auto;
-  }
-input {
-    margin: 10px 0;
+.title {
+  text-align: center;
+  color: #2a363b;
+border-radius: 5px;
 }
-  .label {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 15px;
-  }
-  .button {
-      width: 100px;
-      margin: 10px auto 0 auto;
-  }
+.form {
+  width: 400px;
+  border: 1px solid #2a363b;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+}
+.input {
+  margin: 10px 0;
+  padding: 0 10px;
+  line-height: 30px;
+  border: 1px solid #606dbc;
+  border-radius: 5px;
+
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+  color: #606dbc;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+.button {
+  width: 100px;
+  margin: 10px auto 0 auto;
+}

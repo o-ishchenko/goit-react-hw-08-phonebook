@@ -6,8 +6,11 @@ import s from './Filter.module.css';
 let filterId = nanoid();
 const Filter = ({ value, onChange }) => (
   <div className={s.filter}>
-    <label htmlFor={filterId}>Find contacts by name</label>
+    <label className={s.label} htmlFor={filterId}>
+      Find contacts by name
+    </label>
     <input
+      className={s.input}
       type="text"
       name="filter"
       id={filterId}
